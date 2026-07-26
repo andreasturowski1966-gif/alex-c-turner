@@ -23,6 +23,7 @@
 # misc
 .DS_Store
 *.pem
+/media-inbox/
 
 # debug
 npm-debug.log*
