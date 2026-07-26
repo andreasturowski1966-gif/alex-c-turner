@@ -2,6 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { songs } from "./lyrics/data";
 
+const streamingLinks = {
+  spotify:
+    "https://open.spotify.com/intl-de/artist/7h1Y9T0a3rAB9rEof8esqy?si=8mjqzoL6T5OGtXDanZ-6uQ",
+  amazon:
+    "https://music.amazon.de/artists/B0H9PC22SJ/alex-c-turner?marketplaceId=A1PA6795UKMFR9&musicTerritory=DE&ref=dm_sh_7cpzuRk08b0h8plv6fXSdBvJL",
+};
+
 const navigation = [
   { label: "Music", href: "#music" },
   { label: "The Story", href: "#story" },
@@ -197,7 +204,7 @@ export default function Home() {
 
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#c78a3a]">
-              The debut album
+              The upcoming debut album
             </p>
             <h2 className="mt-5 font-serif text-5xl leading-[0.95] tracking-[-0.04em] sm:text-7xl">
               Home is a feeling.
@@ -236,6 +243,51 @@ export default function Home() {
             >
               Read all lyrics <span aria-hidden="true">→</span>
             </Link>
+          </div>
+        </div>
+
+        <div className="mx-auto mt-24 grid max-w-7xl gap-10 border-t border-white/10 pt-16 sm:mt-32 sm:pt-20 lg:grid-cols-[0.75fr_1.25fr] lg:items-center">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#c78a3a]">
+              Listen now
+            </p>
+            <h2 className="mt-5 font-serif text-4xl leading-tight tracking-[-0.035em] sm:text-6xl">
+              Find Alex on your favorite service.
+            </h2>
+            <p className="mt-6 max-w-xl text-base leading-8 text-white/55">
+              Follow the official artist profile for current releases and
+              everything still to come.
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
+              <a
+                href={streamingLinks.spotify}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-12 items-center justify-center bg-[#1ed760] px-7 text-xs font-bold uppercase tracking-[0.18em] text-[#07150b] transition-colors hover:bg-[#35e273] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1ed760]"
+              >
+                Open Spotify
+              </a>
+              <a
+                href={streamingLinks.amazon}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-12 items-center justify-center border border-white/25 px-7 text-xs font-bold uppercase tracking-[0.18em] text-white transition-colors hover:border-white/60 hover:bg-white/8 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+              >
+                Open Amazon Music
+              </a>
+            </div>
+          </div>
+
+          <div className="overflow-hidden rounded-xl bg-[#24201c] shadow-2xl shadow-black/30">
+            <iframe
+              title="Alex C. Turner on Spotify"
+              src="https://open.spotify.com/embed/artist/7h1Y9T0a3rAB9rEof8esqy?utm_source=generator&theme=0"
+              width="100%"
+              height="352"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+              className="block border-0"
+            />
           </div>
         </div>
       </section>
