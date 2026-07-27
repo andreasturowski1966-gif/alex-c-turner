@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import ExternalEmbed from "./components/ExternalEmbed";
 import { songs } from "./lyrics/data";
 
 const streamingLinks = {
@@ -279,14 +280,13 @@ export default function Home() {
           </div>
 
           <div className="overflow-hidden rounded-xl bg-[#24201c] shadow-2xl shadow-black/30">
-            <iframe
+            <ExternalEmbed
+              provider="Spotify"
               title="Alex C. Turner on Spotify"
               src="https://open.spotify.com/embed/artist/7h1Y9T0a3rAB9rEof8esqy?utm_source=generator&theme=0"
-              width="100%"
-              height="352"
               allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-              loading="lazy"
-              className="block border-0"
+              containerClassName="h-[352px] w-full"
+              iframeClassName="block h-[352px] w-full border-0"
             />
           </div>
         </div>
