@@ -37,7 +37,7 @@ export default function PrivacyPolicyPage() {
           <section className={sectionClass}>
             <h2 className={headingClass}>1. Data Controller</h2>
             <address className="not-italic">
-              Alex Turows Records
+              Alex Turow Records
               <br />
               Proprietor: Andreas Turowski
               <br />

@@ -30,7 +30,7 @@ export default function LegalNoticePage() {
               Information pursuant to Section 5 DDG and Section 18(1) MStV
             </h2>
             <address className="mt-4 not-italic">
-              Alex Turows Records
+              Alex Turow Records
               <br />
               Proprietor: Andreas Turowski
               <br />
