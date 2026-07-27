@@ -466,7 +466,7 @@ export default function Home() {
               Lyrics
             </Link>
             <p className="mt-6 text-xs text-white/30">
-              © 2026 Alex C. Turner. All rights reserved.
+              © 2026 Alex Turow Records. All rights reserved.
             </p>
           </div>
         </div>
