@@ -28,7 +28,7 @@ const homeCopy = {
     navigation: [["Music", "#music"], ["The Story", "#story"], ["The Band", "#band"], ["Gallery", "#gallery"], ["Songs & Stories", "/lyrics"]],
     genre: "Modern Country Rock",
     intro: "Honest stories about family, freedom, second chances, and the road that always leads home.",
-    explore: "Explore Coming Home", discover: "Discover the Story",
+    explore: "Explore Coming Home", discover: "Discover the Story", songsButton: "Songs & Stories",
     quote: "“Alex C. Turner doesn’t write songs about country life. He writes about people finding their way home.”",
     debut: "The upcoming debut album", homeFeeling: "Home is a feeling.",
     albumIntro: "Every song is a chapter from a life shaped by the Blue Ridge Mountains, long highways, hard work, family, and the people worth returning to.",
@@ -56,7 +56,7 @@ const homeCopy = {
     navigation: [["Musik", "#music"], ["Seine Geschichte", "#story"], ["Die Band", "#band"], ["Galerie", "#gallery"], ["Songs & Geschichten", "/lyrics"]],
     genre: "Moderner Country Rock",
     intro: "Ehrliche Geschichten über Familie, Freiheit, zweite Chancen und den Weg, der immer wieder nach Hause führt.",
-    explore: "Coming Home entdecken", discover: "Alex’ Geschichte",
+    explore: "Coming Home entdecken", discover: "Alex’ Geschichte", songsButton: "Songs & Geschichten",
     quote: "„Alex C. Turner schreibt keine Songs über das Landleben. Er schreibt über Menschen, die ihren Weg nach Hause suchen.“",
     debut: "Das kommende Debütalbum", homeFeeling: "Zuhause ist ein Gefühl.",
     albumIntro: "Jeder Song ist ein Kapitel aus einem Leben, geprägt von den Blue Ridge Mountains, langen Highways, harter Arbeit, Familie und den Menschen, für die sich jede Heimkehr lohnt.",
@@ -84,7 +84,7 @@ const homeCopy = {
     navigation: [["Musique", "#music"], ["Son histoire", "#story"], ["Le groupe", "#band"], ["Galerie", "#gallery"], ["Chansons & histoires", "/lyrics"]],
     genre: "Country Rock moderne",
     intro: "Des histoires sincères de famille, de liberté, de secondes chances et de cette route qui finit toujours par ramener chez soi.",
-    explore: "Découvrir Coming Home", discover: "Découvrir son histoire",
+    explore: "Découvrir Coming Home", discover: "Découvrir son histoire", songsButton: "Chansons & histoires",
     quote: "« Alex C. Turner n’écrit pas sur la vie à la campagne. Il écrit sur ceux qui cherchent le chemin du retour. »",
     debut: "Le premier album à venir", homeFeeling: "Le foyer est un sentiment.",
     albumIntro: "Chaque chanson est un chapitre d’une vie façonnée par les Blue Ridge Mountains, les longues routes, le travail, la famille et les personnes pour lesquelles il vaut toujours la peine de revenir.",
@@ -112,7 +112,7 @@ const homeCopy = {
     navigation: [["Música", "#music"], ["Su historia", "#story"], ["La banda", "#band"], ["Galería", "#gallery"], ["Canciones e historias", "/lyrics"]],
     genre: "Country Rock moderno",
     intro: "Historias sinceras sobre la familia, la libertad, las segundas oportunidades y el camino que siempre acaba llevándote a casa.",
-    explore: "Descubre Coming Home", discover: "Descubre su historia",
+    explore: "Descubre Coming Home", discover: "Descubre su historia", songsButton: "Canciones e historias",
     quote: "«Alex C. Turner no escribe canciones sobre la vida en el campo. Escribe sobre personas que buscan el camino de regreso a casa».",
     debut: "Próximo álbum de debut", homeFeeling: "El hogar es una sensación.",
     albumIntro: "Cada canción es un capítulo de una vida marcada por las Blue Ridge Mountains, largas carreteras, trabajo duro, familia y las personas por las que siempre merece la pena regresar.",
@@ -267,6 +267,12 @@ export function HomeContent({ locale }: { locale: Locale }) {
               >
                 {copy.discover}
               </a>
+              <Link
+                href={localePath(locale, "/lyrics")}
+                className="inline-flex min-h-12 items-center justify-center border border-[#d39a50]/75 px-7 text-xs font-bold uppercase tracking-[0.18em] text-[#e7b36f] transition-colors hover:border-[#d39a50] hover:bg-[#d39a50]/10 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d39a50]"
+              >
+                {copy.songsButton}
+              </Link>
             </div>
           </div>
         </div>
