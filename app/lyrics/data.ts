@@ -1,3 +1,6 @@
+import type { Locale } from "../i18n";
+import { songStories, type SongStory } from "./stories";
+
 export type LyricSection = {
   label: string;
   lines: string[];
@@ -8,6 +11,7 @@ export type Song = {
   title: string;
   number: string;
   summary: string;
+  story: SongStory;
   sections: LyricSection[];
 };
 
@@ -17,7 +21,9 @@ export const album = {
   theme: "Home isn't a place. It's the people you return to.",
 };
 
-export const songs: Song[] = [
+type OriginalSong = Omit<Song, "story">;
+
+const originalSongs: OriginalSong[] = [
   {
     slug: "coming-home",
     title: "Coming Home",
@@ -414,6 +420,61 @@ export const songs: Song[] = [
   },
 ];
 
-export function getSong(slug: string) {
-  return songs.find((song) => song.slug === slug);
+const summaries: Record<Locale, Record<string, string>> = {
+  en: Object.fromEntries(originalSongs.map((song) => [song.slug, song.summary])),
+  de: {
+    "coming-home":
+      "Jeder Weg führt zu dem Menschen zurück, der aus einem Ort ein Zuhause macht.",
+    "lucky-me-and-the-mountains":
+      "Ein falscher Abzweig, ein treuer Hund und eine Lektion fürs Leben.",
+    "good-boy-in-disguise":
+      "Eine ehrliche Stimme durchschaut Lederjacke, Lügen und die ganze Fassade.",
+    "i-wanna-be-free":
+      "Der Ruf der offenen Straße und die Entscheidung, den eigenen Versprechen treu zu bleiben.",
+  },
+  fr: {
+    "coming-home":
+      "Chaque route ramène vers la personne qui transforme un lieu en foyer.",
+    "lucky-me-and-the-mountains":
+      "Un mauvais chemin, un chien fidèle et une leçon qui ne s’oublie jamais.",
+    "good-boy-in-disguise":
+      "Une voix sincère voit au-delà du cuir, des mensonges et du rôle qu’il s’était donné.",
+    "i-wanna-be-free":
+      "L’appel de la route et le choix de rester fidèle aux promesses données.",
+  },
+  es: {
+    "coming-home":
+      "Cada camino conduce de vuelta a la persona que convierte un lugar en hogar.",
+    "lucky-me-and-the-mountains":
+      "Un desvío equivocado, un perro fiel y una lección para toda la vida.",
+    "good-boy-in-disguise":
+      "Una voz sincera ve más allá del cuero, las mentiras y las apariencias.",
+    "i-wanna-be-free":
+      "La llamada de la carretera y la decisión de mantenerse fiel a las promesas.",
+  },
+};
+
+const songsByLocale: Record<Locale, Song[]> = {
+  en: [],
+  de: [],
+  fr: [],
+  es: [],
+};
+
+for (const locale of ["en", "de", "fr", "es"] as const) {
+  songsByLocale[locale] = originalSongs.map((song) => ({
+    ...song,
+    summary: summaries[locale][song.slug],
+    story: songStories[locale][song.slug],
+  }));
+}
+
+export const songs = songsByLocale.en;
+
+export function getSongs(locale: Locale = "en") {
+  return songsByLocale[locale];
+}
+
+export function getSong(slug: string, locale: Locale = "en") {
+  return songsByLocale[locale].find((song) => song.slug === slug);
 }

@@ -1,7 +1,19 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import ExternalEmbed from "./components/ExternalEmbed";
-import { songs } from "./lyrics/data";
+import LanguageSwitcher from "./components/LanguageSwitcher";
+import { localePath, type Locale } from "./i18n";
+import { getSongs } from "./lyrics/data";
+
+export const metadata: Metadata = {
+  title: "Alex C. Turner | Modern Country Rock",
+  description:
+    "The official home of Alex C. Turner — modern country rock, honest stories, and the road that always leads home.",
+  alternates: {
+    languages: { en: "/", de: "/de", fr: "/fr", es: "/es" },
+  },
+};
 
 const streamingLinks = {
   spotify:
@@ -10,36 +22,120 @@ const streamingLinks = {
     "https://music.amazon.de/artists/B0H9PC22SJ/alex-c-turner?marketplaceId=A1PA6795UKMFR9&musicTerritory=DE&ref=dm_sh_7cpzuRk08b0h8plv6fXSdBvJL",
 };
 
-const navigation = [
-  { label: "Music", href: "#music" },
-  { label: "The Story", href: "#story" },
-  { label: "The Band", href: "#band" },
-  { label: "Gallery", href: "#gallery" },
-  { label: "Lyrics", href: "/lyrics" },
-];
-
-const storyChapters = [
-  {
-    number: "01",
-    title: "Raised in Virginia",
-    text: "Alex grew up among the forests, mountain roads, and working communities of Virginia. The Blue Ridge Mountains became both a compass and a constant presence in his songs.",
+const homeCopy = {
+  en: {
+    home: "HOME", menu: "Menu", mainNav: "Main navigation", mobileNav: "Mobile navigation",
+    navigation: [["Music", "#music"], ["The Story", "#story"], ["The Band", "#band"], ["Gallery", "#gallery"], ["Songs & Stories", "/lyrics"]],
+    genre: "Modern Country Rock",
+    intro: "Honest stories about family, freedom, second chances, and the road that always leads home.",
+    explore: "Explore Coming Home", discover: "Discover the Story",
+    quote: "“Alex C. Turner doesn’t write songs about country life. He writes about people finding their way home.”",
+    debut: "The upcoming debut album", homeFeeling: "Home is a feeling.",
+    albumIntro: "Every song is a chapter from a life shaped by the Blue Ridge Mountains, long highways, hard work, family, and the people worth returning to.",
+    readStories: "Read the lyrics & stories",
+    listen: "Listen now", services: "Find Alex on your favorite service.",
+    servicesText: "Follow the official artist profile for current releases and everything still to come.",
+    spotify: "Open Spotify", amazon: "Open Amazon Music",
+    storyEyebrow: "The story", storyTitle: "Built by the road behind him.",
+    chapters: [
+      ["01", "Raised in Virginia", "Alex grew up among the forests, mountain roads, and working communities of Virginia. The Blue Ridge Mountains became both a compass and a constant presence in his songs."],
+      ["02", "Building a Life", "He chose carpentry over college and spent years learning that honest work shapes more than wood. Later, he built much of his own home with the same patience."],
+      ["03", "The Band Years", "Long before stepping into the spotlight, Alex played lead guitar and sang background vocals across bars, clubs, honky-tonks, and regional festivals."],
+      ["04", "Coming Home", "When the band years ended, the stories became his own. Coming Home marks the beginning of a solo career built around family, responsibility, memory, and second chances."],
+    ],
+    road: "On the road", meetBand: "Meet the band.",
+    bandIntro: "Alex remains the songwriter and voice at the center. On stage, a close-knit band gives the songs their weight: electric guitars, hard-driving drums, deep bass, and roots that show through every note.",
+    live: "Country rock · Live and loud",
+    roles: { hank: "Rhythm Guitar · Harmonica · Keyboards", wade: "Bass", ty: "Drums" },
+    galleryEyebrow: "Life between the songs", galleryTitle: "In pictures.",
+    galleryText: "Mountains, open roads, live rooms, and quiet moments back home.",
+    footerStories: "Songs & Stories", rights: "All rights reserved.",
   },
-  {
-    number: "02",
-    title: "Building a Life",
-    text: "He chose carpentry over college and spent years learning that honest work shapes more than wood. Later, he built much of his own home with the same patience.",
+  de: {
+    home: "STARTSEITE", menu: "Menü", mainNav: "Hauptnavigation", mobileNav: "Mobile Navigation",
+    navigation: [["Musik", "#music"], ["Seine Geschichte", "#story"], ["Die Band", "#band"], ["Galerie", "#gallery"], ["Songs & Geschichten", "/lyrics"]],
+    genre: "Moderner Country Rock",
+    intro: "Ehrliche Geschichten über Familie, Freiheit, zweite Chancen und den Weg, der immer wieder nach Hause führt.",
+    explore: "Coming Home entdecken", discover: "Alex’ Geschichte",
+    quote: "„Alex C. Turner schreibt keine Songs über das Landleben. Er schreibt über Menschen, die ihren Weg nach Hause suchen.“",
+    debut: "Das kommende Debütalbum", homeFeeling: "Zuhause ist ein Gefühl.",
+    albumIntro: "Jeder Song ist ein Kapitel aus einem Leben, geprägt von den Blue Ridge Mountains, langen Highways, harter Arbeit, Familie und den Menschen, für die sich jede Heimkehr lohnt.",
+    readStories: "Lyrics & Geschichten lesen",
+    listen: "Jetzt anhören", services: "Hör Alex bei deinem Lieblings-Musikdienst.",
+    servicesText: "Folge dem offiziellen Künstlerprofil, damit du keine neue Veröffentlichung verpasst.",
+    spotify: "Spotify öffnen", amazon: "Amazon Music öffnen",
+    storyEyebrow: "Seine Geschichte", storyTitle: "Geprägt von dem Weg, der hinter ihm liegt.",
+    chapters: [
+      ["01", "Aufgewachsen in Virginia", "Alex wuchs zwischen Wäldern, Bergstraßen und den Arbeitergemeinden Virginias auf. Die Blue Ridge Mountains wurden zu seinem inneren Kompass und sind bis heute in seinen Songs gegenwärtig."],
+      ["02", "Ein Leben aufbauen", "Er entschied sich gegen das College und für eine Ausbildung zum Zimmermann. Dabei lernte er, dass ehrliche Arbeit nicht nur Holz formt, sondern auch den Menschen. Später baute er mit derselben Geduld einen großen Teil seines eigenen Hauses."],
+      ["03", "Die Jahre mit der Band", "Lange bevor er selbst im Mittelpunkt stand, spielte Alex Leadgitarre und sang Background-Vocals in Bars, Clubs, Honky-Tonks und auf regionalen Festivals."],
+      ["04", "Coming Home", "Nach dem Ende der Band begann Alex, seine eigenen Geschichten zu erzählen. Coming Home ist der Anfang einer Solokarriere, in deren Mittelpunkt Familie, Verantwortung, Erinnerungen und zweite Chancen stehen."],
+    ],
+    road: "Unterwegs", meetBand: "Die Band.",
+    bandIntro: "Alex bleibt Songwriter, Frontmann und Stimme im Mittelpunkt. Auf der Bühne verleiht eine eingespielte Band den Songs ihr Gewicht: elektrische Gitarren, druckvolle Drums, ein tiefer Bass und hörbare musikalische Wurzeln.",
+    live: "Country Rock · Live und laut",
+    roles: { hank: "Rhythmusgitarre · Harmonica · Keyboards", wade: "Bass", ty: "Drums" },
+    galleryEyebrow: "Das Leben zwischen den Songs", galleryTitle: "In Bildern.",
+    galleryText: "Berge, offene Straßen, kleine Bühnen und ruhige Augenblicke zu Hause.",
+    footerStories: "Songs & Geschichten", rights: "Alle Rechte vorbehalten.",
   },
-  {
-    number: "03",
-    title: "The Band Years",
-    text: "Long before stepping into the spotlight, Alex played lead guitar and sang background vocals across bars, clubs, honky-tonks, and regional festivals.",
+  fr: {
+    home: "ACCUEIL", menu: "Menu", mainNav: "Navigation principale", mobileNav: "Navigation mobile",
+    navigation: [["Musique", "#music"], ["Son histoire", "#story"], ["Le groupe", "#band"], ["Galerie", "#gallery"], ["Chansons & histoires", "/lyrics"]],
+    genre: "Country Rock moderne",
+    intro: "Des histoires sincères de famille, de liberté, de secondes chances et de cette route qui finit toujours par ramener chez soi.",
+    explore: "Découvrir Coming Home", discover: "Découvrir son histoire",
+    quote: "« Alex C. Turner n’écrit pas sur la vie à la campagne. Il écrit sur ceux qui cherchent le chemin du retour. »",
+    debut: "Le premier album à venir", homeFeeling: "Le foyer est un sentiment.",
+    albumIntro: "Chaque chanson est un chapitre d’une vie façonnée par les Blue Ridge Mountains, les longues routes, le travail, la famille et les personnes pour lesquelles il vaut toujours la peine de revenir.",
+    readStories: "Lire les paroles & les histoires",
+    listen: "Écouter", services: "Retrouvez Alex sur votre plateforme préférée.",
+    servicesText: "Suivez le profil officiel d’Alex pour ne manquer aucune nouvelle sortie.",
+    spotify: "Ouvrir Spotify", amazon: "Ouvrir Amazon Music",
+    storyEyebrow: "Son histoire", storyTitle: "Façonné par le chemin parcouru.",
+    chapters: [
+      ["01", "Une enfance en Virginie", "Alex a grandi parmi les forêts, les routes de montagne et les communautés ouvrières de Virginie. Les Blue Ridge Mountains sont devenues sa boussole intérieure et demeurent présentes dans ses chansons."],
+      ["02", "Construire sa vie", "Il a choisi la menuiserie plutôt que l’université et a appris que le travail honnête façonne bien plus que le bois. Plus tard, il a construit une grande partie de sa maison avec la même patience."],
+      ["03", "Les années de groupe", "Bien avant d’occuper le devant de la scène, Alex jouait de la guitare solo et chantait les chœurs dans des bars, des clubs, des honky-tonks et des festivals régionaux."],
+      ["04", "Coming Home", "Lorsque le groupe s’est séparé, Alex a commencé à raconter ses propres histoires. Coming Home ouvre une carrière solo centrée sur la famille, la responsabilité, la mémoire et les secondes chances."],
+    ],
+    road: "Sur la route", meetBand: "Le groupe.",
+    bandIntro: "Alex reste l’auteur, le chanteur et le cœur du projet. Sur scène, un groupe soudé donne toute leur force aux chansons : guitares électriques, batterie puissante, basse profonde et des racines que l’on entend dans chaque note.",
+    live: "Country Rock · En direct et sans retenue",
+    roles: { hank: "Guitare rythmique · Harmonica · Claviers", wade: "Basse", ty: "Batterie" },
+    galleryEyebrow: "La vie entre les chansons", galleryTitle: "En images.",
+    galleryText: "Des montagnes, des routes ouvertes, de petites scènes et des instants paisibles à la maison.",
+    footerStories: "Chansons & histoires", rights: "Tous droits réservés.",
   },
-  {
-    number: "04",
-    title: "Coming Home",
-    text: "When the band years ended, the stories became his own. Coming Home marks the beginning of a solo career built around family, responsibility, memory, and second chances.",
+  es: {
+    home: "INICIO", menu: "Menú", mainNav: "Navegación principal", mobileNav: "Navegación móvil",
+    navigation: [["Música", "#music"], ["Su historia", "#story"], ["La banda", "#band"], ["Galería", "#gallery"], ["Canciones e historias", "/lyrics"]],
+    genre: "Country Rock moderno",
+    intro: "Historias sinceras sobre la familia, la libertad, las segundas oportunidades y el camino que siempre acaba llevándote a casa.",
+    explore: "Descubre Coming Home", discover: "Descubre su historia",
+    quote: "«Alex C. Turner no escribe canciones sobre la vida en el campo. Escribe sobre personas que buscan el camino de regreso a casa».",
+    debut: "Próximo álbum de debut", homeFeeling: "El hogar es una sensación.",
+    albumIntro: "Cada canción es un capítulo de una vida marcada por las Blue Ridge Mountains, largas carreteras, trabajo duro, familia y las personas por las que siempre merece la pena regresar.",
+    readStories: "Leer letras e historias",
+    listen: "Escuchar ahora", services: "Escucha a Alex en tu plataforma favorita.",
+    servicesText: "Sigue el perfil oficial de Alex para no perderte ningún lanzamiento.",
+    spotify: "Abrir Spotify", amazon: "Abrir Amazon Music",
+    storyEyebrow: "Su historia", storyTitle: "Moldeado por el camino recorrido.",
+    chapters: [
+      ["01", "Criado en Virginia", "Alex creció entre los bosques, las carreteras de montaña y las comunidades trabajadoras de Virginia. Las Blue Ridge Mountains se convirtieron en su brújula y siguen presentes en sus canciones."],
+      ["02", "Construir una vida", "Eligió la carpintería en lugar de la universidad y aprendió que el trabajo honrado da forma a mucho más que la madera. Más tarde construyó gran parte de su propia casa con la misma paciencia."],
+      ["03", "Los años con la banda", "Mucho antes de ocupar el centro del escenario, Alex tocaba la guitarra solista y hacía coros en bares, clubes, honky-tonks y festivales regionales."],
+      ["04", "Coming Home", "Cuando terminó la etapa con la banda, Alex empezó a contar sus propias historias. Coming Home abre una carrera en solitario centrada en la familia, la responsabilidad, los recuerdos y las segundas oportunidades."],
+    ],
+    road: "En la carretera", meetBand: "La banda.",
+    bandIntro: "Alex sigue siendo el compositor, la voz y el centro del proyecto. Sobre el escenario, una banda muy unida da peso a las canciones: guitarras eléctricas, batería contundente, bajo profundo y unas raíces que se perciben en cada nota.",
+    live: "Country Rock · En directo y a todo volumen",
+    roles: { hank: "Guitarra rítmica · Armónica · Teclados", wade: "Bajo", ty: "Batería" },
+    galleryEyebrow: "La vida entre canciones", galleryTitle: "En imágenes.",
+    galleryText: "Montañas, carreteras abiertas, pequeñas salas y momentos tranquilos en casa.",
+    footerStories: "Canciones e historias", rights: "Todos los derechos reservados.",
   },
-];
+} as const;
 
 const gallery = [
   {
@@ -74,7 +170,10 @@ const gallery = [
   },
 ];
 
-export default function Home() {
+export function HomeContent({ locale }: { locale: Locale }) {
+  const copy = homeCopy[locale];
+  const songs = getSongs(locale);
+
   return (
     <main className="min-h-screen bg-[#141312] text-[#f5f2ec]">
       <section
@@ -95,29 +194,31 @@ export default function Home() {
           <a
             href="#home"
             className="font-serif text-lg tracking-[0.12em] transition-colors hover:text-[#d39a50]"
-            aria-label="Alex C. Turner – Home"
+            aria-label={`Alex C. Turner – ${copy.home}`}
           >
-            HOME
+            {copy.home}
           </a>
 
           <nav
             className="hidden items-center gap-7 text-[0.68rem] font-semibold uppercase tracking-[0.2em] md:flex"
-            aria-label="Main navigation"
+            aria-label={copy.mainNav}
           >
-            {navigation.map((item) => (
+            {copy.navigation.map(([label, href]) => (
               <a
-                key={item.label}
-                href={item.href}
+                key={label}
+                href={href.startsWith("/") ? localePath(locale, href) : href}
                 className="text-[#eee9df]/80 transition-colors hover:text-[#d39a50]"
               >
-                {item.label}
+                {label}
               </a>
             ))}
           </nav>
 
+          <LanguageSwitcher currentLocale={locale} />
+
           <details className="group relative md:hidden">
             <summary className="flex cursor-pointer list-none items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] [&::-webkit-details-marker]:hidden">
-              Menu
+              {copy.menu}
               <span className="relative block h-3.5 w-5" aria-hidden="true">
                 <span className="absolute left-0 top-0 h-px w-5 bg-current transition-transform group-open:translate-y-[6px] group-open:rotate-45" />
                 <span className="absolute bottom-0 left-0 h-px w-5 bg-current transition-transform group-open:-translate-y-[7px] group-open:-rotate-45" />
@@ -125,15 +226,15 @@ export default function Home() {
             </summary>
             <nav
               className="absolute right-0 top-9 z-20 w-52 border border-white/10 bg-[#141312]/95 p-2 shadow-2xl backdrop-blur-xl"
-              aria-label="Mobile navigation"
+              aria-label={copy.mobileNav}
             >
-              {navigation.map((item) => (
+              {copy.navigation.map(([label, href]) => (
                 <a
-                  key={item.label}
-                  href={item.href}
+                  key={label}
+                  href={href.startsWith("/") ? localePath(locale, href) : href}
                   className="block px-4 py-3 text-sm tracking-[0.12em] text-[#eee9df]/85 transition-colors hover:bg-white/5 hover:text-[#d39a50]"
                 >
-                  {item.label}
+                  {label}
                 </a>
               ))}
             </nav>
@@ -144,28 +245,27 @@ export default function Home() {
           <div className="max-w-4xl">
             <p className="mb-5 flex items-center gap-3 text-[0.68rem] font-bold uppercase tracking-[0.32em] text-[#d39a50] sm:text-xs">
               <span className="h-px w-8 bg-current" aria-hidden="true" />
-              Modern Country Rock
+              {copy.genre}
             </p>
             <h1 className="font-serif text-6xl leading-[0.84] tracking-[-0.045em] text-[#f7f3eb] sm:text-8xl lg:text-[8.6rem]">
               Alex C.
               <span className="block italic text-[#d9c9b5]">Turner</span>
             </h1>
             <p className="mt-7 max-w-xl text-base leading-7 text-[#eee9df]/78 sm:text-lg sm:leading-8">
-              Honest stories about family, freedom, second chances, and the road
-              that always leads home.
+              {copy.intro}
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <a
                 href="#music"
                 className="inline-flex min-h-12 items-center justify-center bg-[#b87731] px-7 text-xs font-bold uppercase tracking-[0.18em] text-white transition-colors hover:bg-[#ca8b45] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d39a50]"
               >
-                Explore Coming Home
+                {copy.explore}
               </a>
               <a
                 href="#story"
                 className="inline-flex min-h-12 items-center justify-center border border-white/35 px-7 text-xs font-bold uppercase tracking-[0.18em] transition-colors hover:border-white hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
               >
-                Discover the Story
+                {copy.discover}
               </a>
             </div>
           </div>
@@ -174,8 +274,7 @@ export default function Home() {
 
       <section className="border-y border-white/8 bg-[#1b1917] px-5 py-20 sm:px-8 sm:py-24">
         <blockquote className="mx-auto max-w-5xl text-center font-serif text-3xl leading-tight text-[#eee9df] sm:text-5xl">
-          “Alex C. Turner doesn&apos;t write songs about country life. He writes
-          about people finding their way home.”
+          {copy.quote}
         </blockquote>
       </section>
 
@@ -205,21 +304,19 @@ export default function Home() {
 
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#c78a3a]">
-              The upcoming debut album
+              {copy.debut}
             </p>
             <h2 className="mt-5 font-serif text-5xl leading-[0.95] tracking-[-0.04em] sm:text-7xl">
-              Home is a feeling.
+              {copy.homeFeeling}
             </h2>
             <p className="mt-7 max-w-2xl text-base leading-8 text-white/58 sm:text-lg">
-              Every song is a chapter from a life shaped by the Blue Ridge
-              Mountains, long highways, hard work, family, and the people worth
-              returning to.
+              {copy.albumIntro}
             </p>
             <ol className="mt-10 border-t border-white/10">
               {songs.map((song) => (
                 <li key={song.slug} className="border-b border-white/10">
                   <Link
-                    href={`/lyrics/${song.slug}`}
+                    href={localePath(locale, `/lyrics/${song.slug}`)}
                     className="group grid grid-cols-[2.5rem_1fr_auto] items-center gap-3 py-5"
                   >
                     <span className="text-[0.68rem] font-bold tracking-[0.15em] text-white/30">
@@ -239,10 +336,10 @@ export default function Home() {
               ))}
             </ol>
             <Link
-              href="/lyrics"
+              href={localePath(locale, "/lyrics")}
               className="mt-9 inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-[#d39a50] transition-colors hover:text-[#e0ad6b]"
             >
-              Read all lyrics <span aria-hidden="true">→</span>
+              {copy.readStories} <span aria-hidden="true">→</span>
             </Link>
           </div>
         </div>
@@ -250,14 +347,13 @@ export default function Home() {
         <div className="mx-auto mt-24 grid max-w-7xl gap-10 border-t border-white/10 pt-16 sm:mt-32 sm:pt-20 lg:grid-cols-[0.75fr_1.25fr] lg:items-center">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#c78a3a]">
-              Listen now
+              {copy.listen}
             </p>
             <h2 className="mt-5 font-serif text-4xl leading-tight tracking-[-0.035em] sm:text-6xl">
-              Find Alex on your favorite service.
+              {copy.services}
             </h2>
             <p className="mt-6 max-w-xl text-base leading-8 text-white/55">
-              Follow the official artist profile for current releases and
-              everything still to come.
+              {copy.servicesText}
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
               <a
@@ -266,7 +362,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="inline-flex min-h-12 items-center justify-center bg-[#1ed760] px-7 text-xs font-bold uppercase tracking-[0.18em] text-[#07150b] transition-colors hover:bg-[#35e273] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1ed760]"
               >
-                Open Spotify
+                {copy.spotify}
               </a>
               <a
                 href={streamingLinks.amazon}
@@ -274,7 +370,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="inline-flex min-h-12 items-center justify-center border border-white/25 px-7 text-xs font-bold uppercase tracking-[0.18em] text-white transition-colors hover:border-white/60 hover:bg-white/8 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
               >
-                Open Amazon Music
+                {copy.amazon}
               </a>
             </div>
           </div>
@@ -287,6 +383,7 @@ export default function Home() {
               allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
               containerClassName="h-[352px] w-full"
               iframeClassName="block h-[352px] w-full border-0"
+              locale={locale}
             />
           </div>
         </div>
@@ -305,26 +402,26 @@ export default function Home() {
           </div>
           <div className="px-5 py-20 sm:px-10 sm:py-28 lg:px-16 xl:px-24">
             <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#9a632d]">
-              The story
+              {copy.storyEyebrow}
             </p>
             <h2 className="mt-5 max-w-xl font-serif text-5xl leading-[0.95] tracking-[-0.04em] sm:text-7xl">
-              Built by the road behind him.
+              {copy.storyTitle}
             </h2>
             <div className="mt-14">
-              {storyChapters.map((chapter) => (
+              {copy.chapters.map(([number, title, text]) => (
                 <article
-                  key={chapter.number}
+                  key={number}
                   className="grid gap-4 border-t border-black/15 py-7 sm:grid-cols-[3rem_1fr]"
                 >
                   <span className="pt-1 text-[0.68rem] font-bold tracking-[0.18em] text-[#9a632d]">
-                    {chapter.number}
+                    {number}
                   </span>
                   <div>
                     <h3 className="font-serif text-2xl sm:text-3xl">
-                      {chapter.title}
+                      {title}
                     </h3>
                     <p className="mt-3 max-w-xl text-sm leading-7 text-black/60 sm:text-base">
-                      {chapter.text}
+                      {text}
                     </p>
                   </div>
                 </article>
@@ -342,17 +439,14 @@ export default function Home() {
           <div className="grid gap-8 lg:grid-cols-2 lg:items-end">
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#c78a3a]">
-                On the road
+                {copy.road}
               </p>
               <h2 className="mt-5 font-serif text-5xl leading-[0.95] tracking-[-0.04em] sm:text-7xl">
-                Meet the band.
+                {copy.meetBand}
               </h2>
             </div>
             <p className="max-w-xl text-base leading-8 text-white/55 lg:justify-self-end">
-              Alex remains the songwriter and voice at the center. On stage, a
-              close-knit band gives the songs their weight: electric guitars,
-              hard-driving drums, deep bass, and roots that show through every
-              note.
+              {copy.bandIntro}
             </p>
           </div>
 
@@ -366,7 +460,7 @@ export default function Home() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
             <p className="absolute bottom-5 left-5 text-xs font-bold uppercase tracking-[0.25em] text-white/75 sm:bottom-8 sm:left-8">
-              Country rock · Live and loud
+              {copy.live}
             </p>
           </div>
 
@@ -374,17 +468,17 @@ export default function Home() {
             {[
               {
                 name: "Hank",
-                role: "Rhythm Guitar · Harmonica · Keyboards",
+                role: copy.roles.hank,
                 image: "/images/band/lead-guitar-harmonica.png",
               },
               {
                 name: "Wade",
-                role: "Bass",
+                role: copy.roles.wade,
                 image: "/images/band/bass-player.png",
               },
               {
                 name: "Tyler “Ty”",
-                role: "Drums",
+                role: copy.roles.ty,
                 image: "/images/band/drummer.png",
               },
             ].map((member) => (
@@ -418,14 +512,14 @@ export default function Home() {
           <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#c78a3a]">
-                Life between the songs
+                {copy.galleryEyebrow}
               </p>
               <h2 className="mt-5 font-serif text-5xl tracking-[-0.04em] sm:text-7xl">
-                In pictures.
+                {copy.galleryTitle}
               </h2>
             </div>
             <p className="max-w-sm text-sm leading-7 text-white/48">
-              Mountains, open roads, live rooms, and quiet moments back home.
+              {copy.galleryText}
             </p>
           </div>
 
@@ -455,22 +549,26 @@ export default function Home() {
               Alex C. Turner
             </p>
             <p className="mt-3 text-xs font-bold uppercase tracking-[0.25em] text-[#c78a3a]">
-              Modern Country Rock
+              {copy.genre}
             </p>
           </div>
           <div className="sm:text-right">
             <Link
-              href="/lyrics"
+              href={localePath(locale, "/lyrics")}
               className="text-xs font-bold uppercase tracking-[0.2em] text-white/65 transition-colors hover:text-[#d39a50]"
             >
-              Lyrics
+              {copy.footerStories}
             </Link>
             <p className="mt-6 text-xs text-white/30">
-              © 2026 Alex Turow Records. All rights reserved.
+              © 2026 Alex Turow Records. {copy.rights}
             </p>
           </div>
         </div>
       </footer>
     </main>
   );
+}
+
+export default function Home() {
+  return <HomeContent locale="en" />;
 }

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { localePath, type Locale } from "../i18n";
 
 type ExternalEmbedProps = {
   provider: "Spotify";
@@ -10,6 +11,7 @@ type ExternalEmbedProps = {
   allow: string;
   containerClassName: string;
   iframeClassName?: string;
+  locale?: Locale;
 };
 
 export default function ExternalEmbed({
@@ -19,8 +21,39 @@ export default function ExternalEmbed({
   allow,
   containerClassName,
   iframeClassName = "h-full w-full border-0",
+  locale = "en",
 }: ExternalEmbedProps) {
   const [isLoaded, setIsLoaded] = useState(false);
+  const copy = {
+    en: {
+      external: "External content",
+      explanation: `Loading this ${provider} content connects your browser to ${provider}. Data may be processed outside the EU.`,
+      load: `Load ${provider}`,
+      consent: "By loading, you consent to this data transfer.",
+      privacy: "Privacy details",
+    },
+    de: {
+      external: "Externer Inhalt",
+      explanation: `Beim Laden dieses ${provider}-Inhalts verbindet sich dein Browser mit ${provider}. Daten können außerhalb der EU verarbeitet werden.`,
+      load: `${provider} laden`,
+      consent: "Mit dem Laden stimmst du dieser Datenübertragung zu.",
+      privacy: "Datenschutzhinweise",
+    },
+    fr: {
+      external: "Contenu externe",
+      explanation: `Le chargement de ce contenu ${provider} connecte votre navigateur à ${provider}. Des données peuvent être traitées en dehors de l’Union européenne.`,
+      load: `Charger ${provider}`,
+      consent: "En le chargeant, vous acceptez ce transfert de données.",
+      privacy: "Informations sur la confidentialité",
+    },
+    es: {
+      external: "Contenido externo",
+      explanation: `Al cargar este contenido de ${provider}, tu navegador se conecta con ${provider}. Es posible que se procesen datos fuera de la Unión Europea.`,
+      load: `Cargar ${provider}`,
+      consent: "Al cargarlo, aceptas esta transferencia de datos.",
+      privacy: "Información sobre privacidad",
+    },
+  }[locale];
 
   if (isLoaded) {
     return (
@@ -41,26 +74,25 @@ export default function ExternalEmbed({
     >
       <div className="max-w-lg">
         <p className="text-[0.65rem] font-bold uppercase tracking-[0.28em] text-[#c78a3a]">
-          External content
+          {copy.external}
         </p>
         <p className="mt-4 text-sm leading-6 text-white/60">
-          Loading this {provider} content connects your browser to {provider}.
-          Data may be processed outside the EU.
+          {copy.explanation}
         </p>
         <button
           type="button"
           onClick={() => setIsLoaded(true)}
           className="mt-6 inline-flex min-h-11 items-center justify-center bg-[#a9692f] px-6 text-[0.65rem] font-bold uppercase tracking-[0.18em] text-white transition-colors hover:bg-[#c17e3c]"
         >
-          Load {provider}
+          {copy.load}
         </button>
         <p className="mt-4 text-[0.68rem] leading-5 text-white/35">
-          By loading, you consent to this data transfer.{" "}
+          {copy.consent}{" "}
           <Link
-            href="/datenschutz"
+            href={localePath(locale, "/datenschutz")}
             className="underline decoration-white/20 underline-offset-4 transition-colors hover:text-white/60"
           >
-            Privacy details
+            {copy.privacy}
           </Link>
         </p>
       </div>
