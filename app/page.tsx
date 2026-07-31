@@ -38,7 +38,7 @@ const homeCopy = {
     spotify: "Open Spotify", amazon: "Open Amazon Music",
     storyEyebrow: "The story", storyTitle: "Built by the road behind him.",
     chapters: [
-      ["01", "Raised in Virginia", "Alex grew up among the forests, mountain roads, and working communities of Virginia. The Blue Ridge Mountains became both a compass and a constant presence in his songs."],
+      ["01", "Raised in Virginia", "Alex grew up among the forests, mountain roads, and working communities of Virginia. Like plenty of kids, he picked up a guitar at thirteen. What began as a teenage curiosity became a lifelong way of telling stories, with the Blue Ridge Mountains serving as both his compass and a constant presence in his songs."],
       ["02", "Building a Life", "He chose carpentry over college and spent years learning that honest work shapes more than wood. Later, he built much of his own home with the same patience."],
       ["03", "The Band Years", "Long before stepping into the spotlight, Alex played lead guitar and sang background vocals across bars, clubs, honky-tonks, and regional festivals."],
       ["04", "Coming Home", "When the band years ended, the stories became his own. Coming Home marks the beginning of a solo career built around family, responsibility, memory, and second chances."],
@@ -66,7 +66,7 @@ const homeCopy = {
     spotify: "Spotify öffnen", amazon: "Amazon Music öffnen",
     storyEyebrow: "Seine Geschichte", storyTitle: "Geprägt von dem Weg, der hinter ihm liegt.",
     chapters: [
-      ["01", "Aufgewachsen in Virginia", "Alex wuchs zwischen Wäldern, Bergstraßen und den Arbeitergemeinden Virginias auf. Die Blue Ridge Mountains wurden zu seinem inneren Kompass und sind bis heute in seinen Songs gegenwärtig."],
+      ["01", "Aufgewachsen in Virginia", "Alex wuchs zwischen Wäldern, Bergstraßen und den Arbeitergemeinden Virginias auf. Wie viele Jugendliche begann er mit dreizehn Jahren Gitarre zu spielen. Was als jugendliche Neugier begann, wurde zu seiner Art, Geschichten zu erzählen. Die Blue Ridge Mountains wurden dabei zu seinem inneren Kompass und sind bis heute in seinen Songs gegenwärtig."],
       ["02", "Ein Leben aufbauen", "Er entschied sich gegen das College und für eine Ausbildung zum Zimmermann. Dabei lernte er, dass ehrliche Arbeit nicht nur Holz formt, sondern auch den Menschen. Später baute er mit derselben Geduld einen großen Teil seines eigenen Hauses."],
       ["03", "Die Jahre mit der Band", "Lange bevor er selbst im Mittelpunkt stand, spielte Alex Leadgitarre und sang Background-Vocals in Bars, Clubs, Honky-Tonks und auf regionalen Festivals."],
       ["04", "Coming Home", "Nach dem Ende der Band begann Alex, seine eigenen Geschichten zu erzählen. Coming Home ist der Anfang einer Solokarriere, in deren Mittelpunkt Familie, Verantwortung, Erinnerungen und zweite Chancen stehen."],
@@ -94,7 +94,7 @@ const homeCopy = {
     spotify: "Ouvrir Spotify", amazon: "Ouvrir Amazon Music",
     storyEyebrow: "Son histoire", storyTitle: "Façonné par le chemin parcouru.",
     chapters: [
-      ["01", "Une enfance en Virginie", "Alex a grandi parmi les forêts, les routes de montagne et les communautés ouvrières de Virginie. Les Blue Ridge Mountains sont devenues sa boussole intérieure et demeurent présentes dans ses chansons."],
+      ["01", "Une enfance en Virginie", "Alex a grandi parmi les forêts, les routes de montagne et les communautés ouvrières de Virginie. Comme beaucoup d’adolescents, il s’est mis à la guitare à treize ans. Ce qui n’était d’abord qu’une curiosité de jeunesse est devenu sa façon de raconter des histoires. Les Blue Ridge Mountains sont alors devenues sa boussole intérieure et demeurent présentes dans ses chansons."],
       ["02", "Construire sa vie", "Il a choisi la menuiserie plutôt que l’université et a appris que le travail honnête façonne bien plus que le bois. Plus tard, il a construit une grande partie de sa maison avec la même patience."],
       ["03", "Les années de groupe", "Bien avant d’occuper le devant de la scène, Alex jouait de la guitare solo et chantait les chœurs dans des bars, des clubs, des honky-tonks et des festivals régionaux."],
       ["04", "Coming Home", "Lorsque le groupe s’est séparé, Alex a commencé à raconter ses propres histoires. Coming Home ouvre une carrière solo centrée sur la famille, la responsabilité, la mémoire et les secondes chances."],
@@ -122,7 +122,7 @@ const homeCopy = {
     spotify: "Abrir Spotify", amazon: "Abrir Amazon Music",
     storyEyebrow: "Su historia", storyTitle: "Moldeado por el camino recorrido.",
     chapters: [
-      ["01", "Criado en Virginia", "Alex creció entre los bosques, las carreteras de montaña y las comunidades trabajadoras de Virginia. Las Blue Ridge Mountains se convirtieron en su brújula y siguen presentes en sus canciones."],
+      ["01", "Criado en Virginia", "Alex creció entre los bosques, las carreteras de montaña y las comunidades trabajadoras de Virginia. Como tantos adolescentes, empezó a tocar la guitarra a los trece años. Lo que nació como una curiosidad juvenil se convirtió en su manera de contar historias. Las Blue Ridge Mountains pasaron a ser su brújula y siguen presentes en sus canciones."],
       ["02", "Construir una vida", "Eligió la carpintería en lugar de la universidad y aprendió que el trabajo honrado da forma a mucho más que la madera. Más tarde construyó gran parte de su propia casa con la misma paciencia."],
       ["03", "Los años con la banda", "Mucho antes de ocupar el centro del escenario, Alex tocaba la guitarra solista y hacía coros en bares, clubes, honky-tonks y festivales regionales."],
       ["04", "Coming Home", "Cuando terminó la etapa con la banda, Alex empezó a contar sus propias historias. Coming Home abre una carrera en solitario centrada en la familia, la responsabilidad, los recuerdos y las segundas oportunidades."],
