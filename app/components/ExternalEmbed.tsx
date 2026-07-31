@@ -5,12 +5,13 @@ import { useState } from "react";
 import { localePath, type Locale } from "../i18n";
 
 type ExternalEmbedProps = {
-  provider: "Spotify";
+  provider: "Spotify" | "YouTube";
   src: string;
   title: string;
   allow: string;
   containerClassName: string;
   iframeClassName?: string;
+  allowFullScreen?: boolean;
   locale?: Locale;
 };
 
@@ -21,6 +22,7 @@ export default function ExternalEmbed({
   allow,
   containerClassName,
   iframeClassName = "h-full w-full border-0",
+  allowFullScreen = false,
   locale = "en",
 }: ExternalEmbedProps) {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -62,6 +64,7 @@ export default function ExternalEmbed({
           src={src}
           title={title}
           allow={allow}
+          allowFullScreen={allowFullScreen}
           className={iframeClassName}
         />
       </div>

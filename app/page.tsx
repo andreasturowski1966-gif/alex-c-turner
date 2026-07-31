@@ -25,10 +25,10 @@ const streamingLinks = {
 const homeCopy = {
   en: {
     home: "HOME", menu: "Menu", mainNav: "Main navigation", mobileNav: "Mobile navigation",
-    navigation: [["Music", "#music"], ["The Story", "#story"], ["The Band", "#band"], ["Gallery", "#gallery"], ["Songs & Stories", "/lyrics"]],
+    navigation: [["Music", "#music"], ["The Story", "#story"], ["The Band", "#band"], ["Gallery", "#gallery"], ["Songs & Stories", "/lyrics"], ["Videos", "/videos"]],
     genre: "Modern Country Rock",
     intro: "Honest stories about family, freedom, second chances, and the road that always leads home.",
-    explore: "Explore Coming Home", discover: "Discover the Story", songsButton: "Songs & Stories",
+    explore: "Explore Coming Home", discover: "Discover the Story", songsButton: "Songs & Stories", videosButton: "The Videos",
     quote: "“Alex C. Turner doesn’t write songs about country life. He writes about people finding their way home.”",
     debut: "The upcoming debut album", homeFeeling: "Home is a feeling.",
     albumIntro: "Every song is a chapter from a life shaped by the Blue Ridge Mountains, long highways, hard work, family, and the people worth returning to.",
@@ -49,14 +49,14 @@ const homeCopy = {
     roles: { hank: "Rhythm Guitar · Harmonica · Keyboards", wade: "Bass", ty: "Drums" },
     galleryEyebrow: "Life between the songs", galleryTitle: "In pictures.",
     galleryText: "Mountains, open roads, live rooms, and quiet moments back home.",
-    footerStories: "Songs & Stories", rights: "All rights reserved.",
+    footerStories: "Songs & Stories", footerVideos: "Videos", rights: "All rights reserved.",
   },
   de: {
     home: "STARTSEITE", menu: "Menü", mainNav: "Hauptnavigation", mobileNav: "Mobile Navigation",
-    navigation: [["Musik", "#music"], ["Seine Geschichte", "#story"], ["Die Band", "#band"], ["Galerie", "#gallery"], ["Songs & Geschichten", "/lyrics"]],
+    navigation: [["Musik", "#music"], ["Seine Geschichte", "#story"], ["Die Band", "#band"], ["Galerie", "#gallery"], ["Songs & Geschichten", "/lyrics"], ["Videos", "/videos"]],
     genre: "Moderner Country Rock",
     intro: "Ehrliche Geschichten über Familie, Freiheit, zweite Chancen und den Weg, der immer wieder nach Hause führt.",
-    explore: "Coming Home entdecken", discover: "Alex’ Geschichte", songsButton: "Songs & Geschichten",
+    explore: "Coming Home entdecken", discover: "Alex’ Geschichte", songsButton: "Songs & Geschichten", videosButton: "Die Videos",
     quote: "„Alex C. Turner schreibt keine Songs über das Landleben. Er schreibt über Menschen, die ihren Weg nach Hause suchen.“",
     debut: "Das kommende Debütalbum", homeFeeling: "Zuhause ist ein Gefühl.",
     albumIntro: "Jeder Song ist ein Kapitel aus einem Leben, geprägt von den Blue Ridge Mountains, langen Highways, harter Arbeit, Familie und den Menschen, für die sich jede Heimkehr lohnt.",
@@ -77,14 +77,14 @@ const homeCopy = {
     roles: { hank: "Rhythmusgitarre · Harmonica · Keyboards", wade: "Bass", ty: "Drums" },
     galleryEyebrow: "Das Leben zwischen den Songs", galleryTitle: "In Bildern.",
     galleryText: "Berge, offene Straßen, kleine Bühnen und ruhige Augenblicke zu Hause.",
-    footerStories: "Songs & Geschichten", rights: "Alle Rechte vorbehalten.",
+    footerStories: "Songs & Geschichten", footerVideos: "Videos", rights: "Alle Rechte vorbehalten.",
   },
   fr: {
     home: "ACCUEIL", menu: "Menu", mainNav: "Navigation principale", mobileNav: "Navigation mobile",
-    navigation: [["Musique", "#music"], ["Son histoire", "#story"], ["Le groupe", "#band"], ["Galerie", "#gallery"], ["Chansons & histoires", "/lyrics"]],
+    navigation: [["Musique", "#music"], ["Son histoire", "#story"], ["Le groupe", "#band"], ["Galerie", "#gallery"], ["Chansons & histoires", "/lyrics"], ["Vidéos", "/videos"]],
     genre: "Country Rock moderne",
     intro: "Des histoires sincères de famille, de liberté, de secondes chances et de cette route qui finit toujours par ramener chez soi.",
-    explore: "Découvrir Coming Home", discover: "Découvrir son histoire", songsButton: "Chansons & histoires",
+    explore: "Découvrir Coming Home", discover: "Découvrir son histoire", songsButton: "Chansons & histoires", videosButton: "Les vidéos",
     quote: "« Alex C. Turner n’écrit pas sur la vie à la campagne. Il écrit sur ceux qui cherchent le chemin du retour. »",
     debut: "Le premier album à venir", homeFeeling: "Le foyer est un sentiment.",
     albumIntro: "Chaque chanson est un chapitre d’une vie façonnée par les Blue Ridge Mountains, les longues routes, le travail, la famille et les personnes pour lesquelles il vaut toujours la peine de revenir.",
@@ -105,14 +105,14 @@ const homeCopy = {
     roles: { hank: "Guitare rythmique · Harmonica · Claviers", wade: "Basse", ty: "Batterie" },
     galleryEyebrow: "La vie entre les chansons", galleryTitle: "En images.",
     galleryText: "Des montagnes, des routes ouvertes, de petites scènes et des instants paisibles à la maison.",
-    footerStories: "Chansons & histoires", rights: "Tous droits réservés.",
+    footerStories: "Chansons & histoires", footerVideos: "Vidéos", rights: "Tous droits réservés.",
   },
   es: {
     home: "INICIO", menu: "Menú", mainNav: "Navegación principal", mobileNav: "Navegación móvil",
-    navigation: [["Música", "#music"], ["Su historia", "#story"], ["La banda", "#band"], ["Galería", "#gallery"], ["Canciones e historias", "/lyrics"]],
+    navigation: [["Música", "#music"], ["Su historia", "#story"], ["La banda", "#band"], ["Galería", "#gallery"], ["Canciones e historias", "/lyrics"], ["Vídeos", "/videos"]],
     genre: "Country Rock moderno",
     intro: "Historias sinceras sobre la familia, la libertad, las segundas oportunidades y el camino que siempre acaba llevándote a casa.",
-    explore: "Descubre Coming Home", discover: "Descubre su historia", songsButton: "Canciones e historias",
+    explore: "Descubre Coming Home", discover: "Descubre su historia", songsButton: "Canciones e historias", videosButton: "Los vídeos",
     quote: "«Alex C. Turner no escribe canciones sobre la vida en el campo. Escribe sobre personas que buscan el camino de regreso a casa».",
     debut: "Próximo álbum de debut", homeFeeling: "El hogar es una sensación.",
     albumIntro: "Cada canción es un capítulo de una vida marcada por las Blue Ridge Mountains, largas carreteras, trabajo duro, familia y las personas por las que siempre merece la pena regresar.",
@@ -133,7 +133,7 @@ const homeCopy = {
     roles: { hank: "Guitarra rítmica · Armónica · Teclados", wade: "Bajo", ty: "Batería" },
     galleryEyebrow: "La vida entre canciones", galleryTitle: "En imágenes.",
     galleryText: "Montañas, carreteras abiertas, pequeñas salas y momentos tranquilos en casa.",
-    footerStories: "Canciones e historias", rights: "Todos los derechos reservados.",
+    footerStories: "Canciones e historias", footerVideos: "Vídeos", rights: "Todos los derechos reservados.",
   },
 } as const;
 
@@ -272,6 +272,12 @@ export function HomeContent({ locale }: { locale: Locale }) {
                 className="inline-flex min-h-12 items-center justify-center border border-[#d39a50]/75 px-7 text-xs font-bold uppercase tracking-[0.18em] text-[#e7b36f] transition-colors hover:border-[#d39a50] hover:bg-[#d39a50]/10 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d39a50]"
               >
                 {copy.songsButton}
+              </Link>
+              <Link
+                href={localePath(locale, "/videos")}
+                className="inline-flex min-h-12 items-center justify-center border border-[#d39a50]/75 px-7 text-xs font-bold uppercase tracking-[0.18em] text-[#e7b36f] transition-colors hover:border-[#d39a50] hover:bg-[#d39a50]/10 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d39a50]"
+              >
+                {copy.videosButton}
               </Link>
             </div>
           </div>
@@ -559,12 +565,20 @@ export function HomeContent({ locale }: { locale: Locale }) {
             </p>
           </div>
           <div className="sm:text-right">
-            <Link
-              href={localePath(locale, "/lyrics")}
-              className="text-xs font-bold uppercase tracking-[0.2em] text-white/65 transition-colors hover:text-[#d39a50]"
-            >
-              {copy.footerStories}
-            </Link>
+            <div className="flex flex-wrap gap-6 sm:justify-end">
+              <Link
+                href={localePath(locale, "/videos")}
+                className="text-xs font-bold uppercase tracking-[0.2em] text-white/65 transition-colors hover:text-[#d39a50]"
+              >
+                {copy.footerVideos}
+              </Link>
+              <Link
+                href={localePath(locale, "/lyrics")}
+                className="text-xs font-bold uppercase tracking-[0.2em] text-white/65 transition-colors hover:text-[#d39a50]"
+              >
+                {copy.footerStories}
+              </Link>
+            </div>
             <p className="mt-6 text-xs text-white/30">
               © 2026 Alex Turow Records. {copy.rights}
             </p>
